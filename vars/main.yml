@@ -1,2 +1,8 @@
 ---
-# vars file for ansible-packer
+download_file: "packer_{{ version }}_linux_amd64.zip"
+download_url: "https://releases.hashicorp.com/packer/{{ version }}/{{ download_file }}"
+download_file_location: "/tmp/{{ download_file }}"
+checksum_url: "https://releases.hashicorp.com/packer/{{ version }}/packer_{{ version }}_SHA256SUMS"
+checksum_file_location: "/tmp/{{ checksum_url | basename }}"
+checksum: >
+  sha256:{{ checksum_file.content | b64decode | regex_search('^([^\\s]+)\\s+[^\\s]+_linux_amd64.*$', multiline=True) | regex_replace('^([^\\s]+)\\s+[^\\s]+_linux_amd64.*$', '\\1') }}
