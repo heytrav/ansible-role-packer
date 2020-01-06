@@ -13,3 +13,4 @@ def test_packer_binary(host):
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
+    assert oct(f.mode) == '0755'
