@@ -15,6 +15,9 @@ Role Variables
 Dependencies
 ------------
 
+* `unzip` or `tar`
+  Unarchiving the packer zip file
+
 
 Example Playbook
 ----------------
