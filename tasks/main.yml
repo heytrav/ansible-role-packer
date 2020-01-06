@@ -1,4 +1,9 @@
 ---
+- name: Update cache in zenial
+  apt:
+    update_cache: yes
+  when: distribution_release == "xenial"
+
 - name: Install unzip
   package:
     name: unzip
