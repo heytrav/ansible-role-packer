@@ -30,11 +30,3 @@
     src: "{{ download_file_location }}"
     dest: /usr/local/bin
     remote_src: yes
-
-- name: Cleanup download and checksum
-  file:
-    path: "{{ item }}"
-    state: absent
-  loop:
-    - "{{ checksum_file_location }}"
-    - "{{ download_file_location }}"
