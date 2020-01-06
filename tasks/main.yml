@@ -7,6 +7,6 @@
 
 - name: Unarchive packer
   unarchive:
-    src: "{{ download_url }}"
+    src: "{{ packer_download_url }}"
     dest: /usr/local/bin
     remote_src: yes
