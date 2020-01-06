@@ -1,2 +1,3 @@
 ---
 packer_version: 1.5.1
+packer_executable_directory: /usr/local/bin

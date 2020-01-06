@@ -8,6 +8,7 @@
 - name: Unarchive packer
   unarchive:
     src: "{{ packer_download_url }}"
-    dest: /usr/local/bin
-    remote_src: yes
+    dest: "{{ packer_executable_directory }}"
+    remote_src: true
     mode: 0755
+    creates: "{{ packer_executable_directory }}/packer"
