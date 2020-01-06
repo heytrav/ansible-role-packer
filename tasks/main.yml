@@ -1,4 +1,8 @@
 ---
+- name: Install unzip
+  package:
+    name: unzip
+    state: present
 
 - name: Download checksum file
   get_url:
