@@ -10,3 +10,4 @@
     src: "{{ packer_download_url }}"
     dest: /usr/local/bin
     remote_src: yes
+    mode: 0755
