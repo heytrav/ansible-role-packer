@@ -3,40 +3,21 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
 platforms:
   - name: centos7
-    image: percygrunwald/docker-centos7-ansible
-    privileged: false
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    pre_build_image: true
-    environment:
-      container: docker
-    override_command: False
-    tty: True
+    image: centos:7
   - name: bionic
-    image: percygrunwald/docker-ubuntu1804-ansible:latest
-    privileged: true
-    pre_build_image: true
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    environment:
-      container: docker
-    tty: True
-    override_command: False
+    image: ubuntu:18.04
+  - name: centos8
+    image: centos:8
+  - name: focal
+    image: ubuntu:20.04
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
 verifier:
-  name: testinfra
-  lint:
-    name: flake8
+  name: ansible
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8

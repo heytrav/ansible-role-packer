@@ -4,6 +4,7 @@
   package:
     name: unzip
     state: present
+    update_cache: true
 
 - name: Unarchive packer
   unarchive:

@@ -1,0 +1,25 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check that installed file exists
+      stat:
+        path: /usr/local/bin/packer
+      register: s
+
+    - name: Assert file exists
+      assert:
+        that: s.stat.exists
+
+    - name: Assert owner is root
+      assert:
+        that: s.stat.pw_name == "root"
+
+    - name: Assert group is root
+      assert:
+        that: s.stat.gr_name == "root"
+
+    - name: Assert file is executable
+      assert:
+        that: s.stat.executable
